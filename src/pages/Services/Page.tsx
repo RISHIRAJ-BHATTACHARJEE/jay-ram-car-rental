@@ -219,7 +219,7 @@ export function ServicesPage() {
 
       {/* Booking Call To Action Banner */}
       <section className="py-24 bg-cream px-6 relative overflow-hidden">
-        <div className="absolute right-0 bottom-0 top-0 w-1/3 bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
+        <div className="absolute right-0 bottom-0 top-0 w-1/3 bg-linear-to-l from-primary/5 to-transparent pointer-events-none" />
         <div className="mx-auto max-w-5xl text-center relative z-10">
           <div className="flex justify-center">
             <EyebrowLabel>Fast & Easy Booking</EyebrowLabel>

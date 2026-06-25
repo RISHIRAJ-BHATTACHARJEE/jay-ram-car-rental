@@ -199,7 +199,7 @@ export function CarsPage() {
               </div>
 
               {/* Details side */}
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-6 flex flex-col grow">
                 <span className="text-xs font-semibold text-primary uppercase tracking-wider">{car.tag}</span>
                 <h3 className="mt-2 font-display font-bold text-2xl group-hover:text-primary transition-colors">{car.name}</h3>
                 
