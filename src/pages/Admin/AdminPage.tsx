@@ -303,7 +303,7 @@ export function AdminPage() {
                       />
                     </div>
 
-                    <div className="flex-grow min-w-0 flex flex-col justify-between py-0.5">
+                    <div className="grow min-w-0 flex flex-col justify-between py-0.5">
                       <div className="text-left">
                         <p className="font-mono text-xs text-foreground font-semibold truncate" title={image.name}>
                           {image.name}
