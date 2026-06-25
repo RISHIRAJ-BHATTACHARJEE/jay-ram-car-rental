@@ -4,7 +4,7 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { EyebrowLabel } from "../ui";
 import { storageService } from "../../lib/storage";
-import faqBanner from "@/assets/faq.jpg";
+import faqBanner from "@/assets/faq.png";
 
 interface BentoItemProps {
   placeholderText: string;

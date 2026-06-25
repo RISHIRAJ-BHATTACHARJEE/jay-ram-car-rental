@@ -1,6 +1,10 @@
 import { useState } from "react";
 import heroCar from "@/assets/hero-car.jpg";
 import { EyebrowLabel, PillButton } from "../ui";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { format, parseISO, isValid } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
 
 export function Hero() {
   const [formData, setFormData] = useState({
@@ -76,18 +80,60 @@ export function Hero() {
               { label: "Drop Location", key: "dropLocation", ph: "Drop Location", type: "text" },
               { label: "Pickup Date", key: "pickupDate", ph: "dd-mm-yyyy", type: "date" },
               { label: "No. of People", key: "noOfPeople", ph: "No. of People", type: "number" },
-            ].map((f) => (
-              <div key={f.label}>
-                <label className="block text-xs font-semibold mb-1 text-muted-foreground truncate" title={f.label}>{f.label}</label>
-                <input
-                  type={f.type}
-                  placeholder={f.ph}
-                  value={formData[f.key as keyof typeof formData]}
-                  onChange={(e) => handleChange(f.key, e.target.value)}
-                  className="w-full border-b border-border bg-transparent py-1 text-sm outline-none focus:border-primary placeholder:text-muted-foreground"
-                />
-              </div>
-            ))}
+            ].map((f) => {
+              if (f.key === "pickupDate") {
+                const dateVal = formData.pickupDate ? parseISO(formData.pickupDate) : undefined;
+                const formattedDate = dateVal && isValid(dateVal) ? format(dateVal, "dd-MM-yyyy") : "";
+
+                return (
+                  <div key={f.label} className="relative">
+                    <label className="block text-xs font-semibold mb-1 text-muted-foreground truncate" title={f.label}>{f.label}</label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <button
+                          type="button"
+                          className="w-full border-b border-border bg-transparent py-1 text-sm text-left outline-none focus:border-primary placeholder:text-muted-foreground flex items-center justify-between cursor-pointer"
+                        >
+                          <span className={formattedDate ? "text-foreground font-display font-medium" : "text-muted-foreground font-sans text-sm"}>
+                            {formattedDate || f.ph}
+                          </span>
+                          <CalendarIcon className="h-4 w-4 text-muted-foreground ml-1 shrink-0" />
+                        </button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={dateVal}
+                          onSelect={(date) => {
+                            if (date) {
+                              const yyyy = date.getFullYear();
+                              const mm = String(date.getMonth() + 1).padStart(2, "0");
+                              const dd = String(date.getDate()).padStart(2, "0");
+                              handleChange("pickupDate", `${yyyy}-${mm}-${dd}`);
+                            } else {
+                              handleChange("pickupDate", "");
+                            }
+                          }}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                );
+              }
+
+              return (
+                <div key={f.label}>
+                  <label className="block text-xs font-semibold mb-1 text-muted-foreground truncate" title={f.label}>{f.label}</label>
+                  <input
+                    type={f.type}
+                    placeholder={f.ph}
+                    value={formData[f.key as keyof typeof formData]}
+                    onChange={(e) => handleChange(f.key, e.target.value)}
+                    className="w-full border-b border-border bg-transparent py-1 text-sm outline-none focus:border-primary placeholder:text-muted-foreground"
+                  />
+                </div>
+              );
+            })}
             <div className="flex justify-end md:col-span-1">
               <button 
                 onClick={handleSend}
@@ -102,3 +148,4 @@ export function Hero() {
     </section>
   );
 }
+

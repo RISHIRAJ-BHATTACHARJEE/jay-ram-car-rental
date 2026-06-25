@@ -20,7 +20,7 @@ import {
   MapPin, 
   Info
 } from "lucide-react";
-import faqBanner from "@/assets/faq.jpg";
+import faqBanner from "@/assets/faq.png";
 
 export function TermsConditionsPage() {
   const [activeSection, setActiveSection] = useState("booking");

@@ -14,7 +14,7 @@ import balenoImg from "@/assets/baleno.png";
 import weddingCarImg from "@/assets/wedding-car.png";
 
 // Import banner asset
-import faqBanner from "@/assets/faq.jpg";
+import faqBanner from "@/assets/faq.png";
 
 const carsData = [
   {

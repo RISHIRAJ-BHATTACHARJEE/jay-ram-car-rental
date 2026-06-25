@@ -1,14 +1,33 @@
 import { Star, ArrowLeft, ArrowRight } from "lucide-react";
-import a1 from "@/assets/avatar-1.jpg";
-import a2 from "@/assets/avatar-2.jpg";
-import a3 from "@/assets/avatar-3.jpg";
 import { EyebrowLabel } from "../ui";
 
 const reviews = [
-  { name: "Annette Black", role: "Project Manager", avatar: a1, stars: 5 },
-  { name: "Leslie Alexander", role: "Project Manager", avatar: a2, stars: 5 },
-  { name: "Alis White", role: "Project Manager", avatar: a3, stars: 4 },
+  { 
+    name: "Deborshi Choudhury", 
+    role: "Local Guide", 
+    stars: 5,
+    description: "The service was great. Owner himself drop us to various locations in Arunachal Pradesh starting from Tinsukia.... Overall experience was awesome. He guided us the entire trip to lovely location and great food..."
+  },
+  { 
+    name: "Kaustavnil Baruah", 
+    role: "Local Guide", 
+    stars: 5,
+    description: "I had an amazing experience with the service of this company. I went to namsai by booking a car from them. The driver was extremely polite and respectful throughout the journey and helped us at times of need. Thankyou Jay ram car rental"
+  },
+  { 
+    name: "AriÑDom Xaikia", 
+    role: "Local Guide", 
+    stars: 5,
+    description: "My experience with Jay Ram Car Rental service was good,the driver was good and with calm nature,I suggest everyone whoever willing to opt for car rental in tinsukia can go for dis car rental,u will love their friendly behaviour with customers"
+  },
 ];
+
+function getInitials(name: string) {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length === 0) return "";
+  if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+  return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+}
 
 export function Testimonials() {
   return (
@@ -35,11 +54,12 @@ export function Testimonials() {
                 ))}
               </div>
               <p className="mt-5 text-muted-foreground">
-                Renting a car from NovaRide was a great decision. Not only did I get a reliable and
-                comfortable vehicle, but the prices were also very competitive.
+                {r.description}
               </p>
               <div className="mt-6 pt-5 border-t border-border flex items-center gap-4">
-                <img src={r.avatar} alt={r.name} className="h-12 w-12 rounded-full object-cover" loading="lazy" />
+                <div className="h-12 w-12 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center font-display font-bold text-primary dark:text-neutral-200 select-none text-sm">
+                  {getInitials(r.name)}
+                </div>
                 <div>
                   <p className="font-display font-bold">{r.name}</p>
                   <p className="text-sm text-muted-foreground">{r.role}</p>

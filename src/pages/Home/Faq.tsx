@@ -1,5 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion";
-import faqImg from "@/assets/faq.jpg";
+import faqImg from "@/assets/faq.png";
 import { EyebrowLabel } from "../ui";
 
 const qs = [

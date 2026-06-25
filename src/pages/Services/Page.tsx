@@ -6,7 +6,7 @@ import { EyebrowLabel, PillButton } from "../ui";
 import { useLocation } from "react-router";
 
 // Import assets
-import faqBanner from "@/assets/faq.jpg";
+import faqBanner from "@/assets/faq.png";
 import driverImg from "@/assets/driver-1.jpg";
 import luxuryCarImg from "@/assets/cat-luxury.jpg";
 import airportImg from "@/assets/why-choose.jpg";
